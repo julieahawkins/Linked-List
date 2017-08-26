@@ -1,3 +1,97 @@
 * {
-	background-color: magenta;
+
 }
+
+header {
+	background-color: #455A64;
+}
+
+h1 {
+	color: #FFFFFF;
+}
+
+img {
+	width: 50px;
+}
+
+input {
+
+}
+
+::placeholder {
+	/*check color of placeholder*/
+}
+
+.enter-button {
+	background-color: #FFC107;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+main {
+	background-color: #CFD8DC; 
+}
+
+article {
+	background-color: #FFFFFF;
+	border: 1px solid #607D8E;
+}
+
+h2 {
+	color: #455A64;
+}
+
+p {
+	border-bottom: 1px solid #CFD8DC;
+	border-top: 1px solid #CFD8DC;
+
+}
+
+a {
+	color: #607D8E;
+	text-decoration: underline #F2F4F4;
+}
+
+button {
+	/*inherit says take value from parent element*/
+	background-color: inherit;
+	border: none;
+	color: #607D8E;
+	text-decoration: underline #F2F4F4;
+}
+
+.read-button:hover, 
+.delete-button:hover, 
+a:hover {
+	color: #455A64;
+	text-decoration: underline #FFC107;
+}
+
+
+
+.read {
+	background-color: #F2F4F4;
+}
+ /*we will figure out how to change the underline of the link
+  and the color of the read between when the article has a class of .read*/
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

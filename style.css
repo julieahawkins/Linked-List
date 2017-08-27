@@ -161,6 +161,13 @@ a:hover {
 		margin: 20px auto;
 	}
 
+	h1 {
+		font-size: 200%;
+	}
+	 img {
+	 	width: 50px;
+	 }
+
 	h2 {
 		font-size: 140%;
 	}

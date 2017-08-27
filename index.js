@@ -6,41 +6,70 @@
 var websiteTitleInput = $('.website-title-input');
 var websiteUrlInput = $('.website-url-input');
 var enterButton = $('.enter-button');
-var bookmark = $('article');
+var articles = $('article');
 var readButton = $('.read-button');
 var deleteButton = $('.delete-button');
 
-
+var bookmarkArray = [];
 
 enterButton.bind('click', addLink);
-readButton.bind('click', toggleRead);
-deleteButton.bind('click', deleteLink);
+readButton[0].addEventListener('click', 
+	function(clickEvent) {
+		toggleRead('.article0')});
+readButton[1].addEventListener('click', 
+	function(clickEvent) {
+		toggleRead('.article1')});
+readButton[2].addEventListener('click', 
+	function(clickEvent) {
+		toggleRead('.article2')});
+readButton[3].addEventListener('click', 
+	function(clickEvent) {
+		toggleRead('.article3')});
+
+deleteButton[1].addEventListener('click', deleteLink);
 
 
 function addLink() {
-	//  title = websiteTitleInput.innerText 
-	//  link = websiteUrlInput.innerText 
-	console.log('hello!');
+	var title = websiteTitleInput.val(); 
+	var link = websiteUrlInput.val(); 
+	var bookmark = new Bookmark(title, link);
+	bookmarkArray.push(bookmark);
+
+	//console.log(bookmarkArray);
+
+	displayArray();
+
 	// var bookmark = new Bookmark('title', 'link')
 	// sticks it in the first article
-};
+}
 
+function displayArray() {
+	for (var i = 0; i < bookmarkArray.length; i++) {
+		$('.article' + i).html('<h2>' + bookmarkArray[i].title + '</h2><p><a href="' + bookmarkArray[i].link + '">' + bookmarkArray[i].link + '</a></p><button class="read-button">Read</button><button class="delete-button">Delete</button>');
+	}
+}
 
-function toggleRead() {
-	bookmark.classList.toggle('read');
-	// toggles .read class on and off the article tags
+function toggleRead(articleClass) {
+	// bookmark.classList.toggle('read');
+	$(articleClass).toggleClass('read');
+		// toggles .read class on and off the article tags
 };
 
 
 function deleteLink() {
 	// deletes the bookmark
+
+	$(this).article.html('hello');
+
+
 };
 
 /////////////
 
 function Bookmark(title, link) {
 	this.title = title;
-	this.link = link; 
+	this.link = link;
+	this.read = 'unread';
 }
 
 // Bookmark.prototype.toggleRead =

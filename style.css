@@ -11,6 +11,7 @@ html, body {
 
 header {
 	background-color: #455A64;
+	background-color: magenta;
 	float: left;
 	height: 100%;
 	position: relative;

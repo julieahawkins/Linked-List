@@ -15,6 +15,8 @@ var bookmarkArray = [];
 enterButton.bind('click', addLink);
 
 
+
+
 //adds event listener to read buttons when Add List runs and bookmarkArray is populated
 function readButtonListener(index) {
 	readButton[index].addEventListener('click', 
@@ -23,19 +25,31 @@ function readButtonListener(index) {
 		});
 }
 
+function deleteButtonListener(index) {
+	deleteButton[index].addEventListener('click',
+		function(clickEvent) {
+			bookmarkArray.splice(index, 1)
+			console.log(bookmarkArray)
+			displayArray(); 
+		});
+}
 
-
-deleteButton[1].addEventListener('click', deleteLink);
+// deleteButton[1].addEventListener('click', deleteLink);
 
 
 function addLink() {
 	var title = websiteTitleInput.val(); 
 	var link = websiteUrlInput.val(); 
+	if (title === '' || link === '') {
+		alert('You must include a website title and a website URL!')
+	} else {
+
 	var bookmark = new Bookmark(title, link);
 	bookmarkArray.push(bookmark);
 
 	//console.log(bookmarkArray);
 	readButtonListener(bookmarkArray.length - 1);
+	deleteButtonListener(bookmarkArray.length - 1);
 	displayArray();
 
 
@@ -45,15 +59,19 @@ function addLink() {
 
 	// var bookmark = new Bookmark('title', 'link')
 	// sticks it in the first article
-}
+	}
+};
 
 
 function displayArray() {
-	for (var i = 0; i < bookmarkArray.length; i++) {
-		//$('.article' + i).html('<h2>' + bookmarkArray[i].title + '</h2><p><a href="' + bookmarkArray[i].link + '">' + bookmarkArray[i].link + '</a></p><button class="read-button' + i + '">Read</button><button class="delete-button' + i + '">Delete</button>');
-		$('.title' + i).text(bookmarkArray[i].title);
-		$('.link' + i).html('<a href="' + bookmarkArray[i].link + '">' + bookmarkArray[i].link + '</a>');
-
+	for (var i = 0; i < $('article').length; i++) {
+		if (bookmarkArray[i]) {
+			$('.title' + i).text(bookmarkArray[i].title);
+			$('.link' + i).html('<a href="' + bookmarkArray[i].link + '">' + bookmarkArray[i].link + '</a>');
+		} else {
+			$('.title' + i).text('The Website Title');
+			$('.link' + i).html('www.thewebsiteurl.com');
+		}
 	}
 
 
@@ -66,14 +84,6 @@ function displayArray() {
 // 		// toggles .read class on and off the article tags
 // };
 
-
-function deleteLink() {
-	// deletes the bookmark
-
-	$(this).article.html('hello');
-
-
-};
 
 /////////////
 

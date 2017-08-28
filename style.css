@@ -64,13 +64,14 @@ input:focus {
 	color: #FFFFFF;
 	cursor: pointer;
 	display: block;
-	font-size: 75%;
+	font-size: 100%;
 	font-weight: 800;
 	margin: 20px auto;
+	padding: 0px;
 	/*padding-right: 20px;
 	padding-left: 20px;*/
 	text-decoration: none;
-	width: 96.75%;
+	width: 95%;
 }
 
 main {

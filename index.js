@@ -13,18 +13,17 @@ var deleteButton = $('.delete-button');
 var bookmarkArray = [];
 
 enterButton.bind('click', addLink);
-readButton[0].addEventListener('click', 
-	function(clickEvent) {
-		toggleRead('.article0')});
-readButton[1].addEventListener('click', 
-	function(clickEvent) {
-		toggleRead('.article1')});
-readButton[2].addEventListener('click', 
-	function(clickEvent) {
-		toggleRead('.article2')});
-readButton[3].addEventListener('click', 
-	function(clickEvent) {
-		toggleRead('.article3')});
+
+
+//adds event listener to read buttons when Add List runs and bookmarkArray is populated
+function readButtonListener(index) {
+	readButton[index].addEventListener('click', 
+		function(clickEvent) {
+			bookmarkArray[index].toggleRead();
+		});
+}
+
+
 
 deleteButton[1].addEventListener('click', deleteLink);
 
@@ -36,24 +35,36 @@ function addLink() {
 	bookmarkArray.push(bookmark);
 
 	//console.log(bookmarkArray);
-
+	readButtonListener(bookmarkArray.length - 1);
 	displayArray();
+
+
+
+	console.log(bookmarkArray);
+	//displayArray[0].toggleRead();
 
 	// var bookmark = new Bookmark('title', 'link')
 	// sticks it in the first article
 }
 
+
 function displayArray() {
 	for (var i = 0; i < bookmarkArray.length; i++) {
-		$('.article' + i).html('<h2>' + bookmarkArray[i].title + '</h2><p><a href="' + bookmarkArray[i].link + '">' + bookmarkArray[i].link + '</a></p><button class="read-button">Read</button><button class="delete-button">Delete</button>');
+		//$('.article' + i).html('<h2>' + bookmarkArray[i].title + '</h2><p><a href="' + bookmarkArray[i].link + '">' + bookmarkArray[i].link + '</a></p><button class="read-button' + i + '">Read</button><button class="delete-button' + i + '">Delete</button>');
+		$('.title' + i).text(bookmarkArray[i].title);
+		$('.link' + i).html('<a href="' + bookmarkArray[i].link + '">' + bookmarkArray[i].link + '</a>');
+
 	}
+
+
 }
 
-function toggleRead(articleClass) {
-	// bookmark.classList.toggle('read');
-	$(articleClass).toggleClass('read');
-		// toggles .read class on and off the article tags
-};
+// function toggleRead(articleClass) {
+// 	// bookmark.classList.toggle('read');
+// 	console.log("in function toggleRead, this is " + this);
+// 	$(articleClass).toggleClass('read');
+// 		// toggles .read class on and off the article tags
+// };
 
 
 function deleteLink() {
@@ -72,7 +83,11 @@ function Bookmark(title, link) {
 	this.read = 'unread';
 }
 
-// Bookmark.prototype.toggleRead =
+Bookmark.prototype.toggleRead = function() {
+	var articleClass = '.article' + bookmarkArray.indexOf(this);
+	$(articleClass).toggleClass('read');
+
+};
 
 
 // Bookmark.prototype.deleteLink =

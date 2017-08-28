@@ -3,6 +3,8 @@
 //read button event listener >>adds class .read
 //delete button event listener >>deletes
 
+
+
 var websiteTitleInput = $('.website-title-input');
 var websiteUrlInput = $('.website-url-input');
 var enterButton = $('.enter-button');
@@ -49,6 +51,8 @@ function addLink() {
 
 
 function displayArray() {
+//set the entire section HTML to placeholder
+
 	for (var i = 0; i < bookmarkArray.length; i++) {
 		//$('.article' + i).html('<h2>' + bookmarkArray[i].title + '</h2><p><a href="' + bookmarkArray[i].link + '">' + bookmarkArray[i].link + '</a></p><button class="read-button' + i + '">Read</button><button class="delete-button' + i + '">Delete</button>');
 		$('.title' + i).text(bookmarkArray[i].title);

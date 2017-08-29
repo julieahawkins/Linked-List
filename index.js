@@ -3,6 +3,8 @@
 //read button event listener >>adds class .read
 //delete button event listener >>deletes
 
+
+
 var websiteTitleInput = $('.website-title-input');
 var websiteUrlInput = $('.website-url-input');
 var enterButton = $('.enter-button');
@@ -64,6 +66,9 @@ function addLink() {
 
 
 function displayArray() {
+
+//set the entire section HTML to placeholder
+
 	for (var i = 0; i < $('article').length; i++) {
 		if (bookmarkArray[i]) {
 			$('.title' + i).text(bookmarkArray[i].title);
@@ -72,6 +77,7 @@ function displayArray() {
 			$('.title' + i).text('The Website Title');
 			$('.link' + i).html('www.thewebsiteurl.com');
 		}
+
 	}
 
 

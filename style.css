@@ -43,7 +43,7 @@ input {
 	width: 95%;
 }
 
-input:focus {
+*:focus {
 	outline: 2px solid #FFC107;
 	box-shadow: 0 0 5px rgba(255, 193, 7, 1);
 }
@@ -58,7 +58,8 @@ input:focus {
 	/*check color of placeholder*/
 }
 
-.enter-button {
+.enter-button,
+.clear-all {
 	background-color: #FFC107;
 	border: 2px solid #FFC107;
 	color: #FFFFFF;
@@ -74,10 +75,17 @@ input:focus {
 	width: 95%;
 }
 
+.enter-button:disabled,
+.clear-all:disabled {
+	background-color: gray;
+	border-color: gray;
+	cursor: not-allowed;
+}
+
 main {
 	background-color: #CFD8DC; 
 	float: right;
-	height: 100vh;
+	height: 100%;
 	position: relative;
 	width: 50%;
 }
@@ -86,9 +94,13 @@ main {
 	/*height 5vmax;*/
 	display: table;
 	margin: auto;
-	position: absolute;
-	top: 0; right: 0; left: 0; bottom: 0;
 	width: 100%;
+}
+
+h4 {
+	display: inline-block;
+	border: 2px solid #FFC107;
+	padding
 }
 
 article {
@@ -145,18 +157,29 @@ button {
 a:hover {
 	color: #455A64;
 	text-decoration: underline #FFC107;
+	font-weight: 800;
 }
 
 
 
 .read {
 	background-color: #F2F4F4;
-	background-color: magenta;
-	color: #F05A28;
+	/*background-color: magenta;*/
 }
- /*we will figure out how to change the underline of the link
-  and the color of the read between when the article has a class of .read*/
 
+.read .read-button{
+	color: #F05A28;
+	font-weight: 800;
+}
+
+.read a {
+	text-decoration: underline #CFD8DC;
+}
+
+.read a:hover {
+	text-decoration: underline #FFC107;
+}
+ 
  
 @media screen and (max-width: 700px) {
 	input {

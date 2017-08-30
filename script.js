@@ -1,9 +1,9 @@
-var websiteTitleInput = $('.website-title-input');
-var websiteUrlInput = $('.website-url-input');
-var enterButton = $('.enter-button');
-var clearButton =$('.clear-all');
+//event listeners
+$('.website-title-input').focus();
+$('.enter-button').bind('click', enterClick);
+$('.clear-all').bind('click', clearRead);
 
-//should we use our set vars?
+
 $('.website-title-input, .website-url-input').keyup(function(e) {
 	e.preventDefault();
 	$('.enter-button').prop('disabled', false);
@@ -25,62 +25,57 @@ $('.main-content').bind('click', function(e) {
 
 	if(e.target.className === 'delete-button') {
 		var articleDelete = e.target.closest('article');
-		/////////////////////////////jquery animation
 		$(articleDelete).slideUp('slow', function() {
-		$(articleDelete).remove();
-		countBookmarks();
-		//////////////////////////////////////////
-	});
-		
+			$(articleDelete).remove();
+			countBookmarks();
+		});
 	}
 });
 
 
-enterButton.bind('click', enterClick);
-clearButton.bind('click', clearRead);
-
-
+//when Enter button is clicked or Enter key is pressed
 function enterClick() {
-	var title = websiteTitleInput.val(); 
-	var link = websiteUrlInput.val();
+	var title = $('.website-title-input').val(); 
+	var link = $('.website-url-input').val();
 	if (title === '' || link === '') {
 		//we know alerts are terrible, you should never see this one!
 		alert('YOU NEED BOTH A TITLE AND A URL!')
 	} else {
 	var newArticle = createBookmark(title, link);
-
-	///////////////////////////////////////////////////////////
 	$(newArticle).prependTo('.main-content').hide().slideDown('slow');
-
-	//old version below... this just makes the bookmark appear
-	//$('.main-content').prepend(newArticle);
-
-
 	countBookmarks();
-	$('.website-title-input').val('');
-	$('.website-url-input').val('');
-	$('.enter-button').prop('disabled', true);
-	$('.website-title-input').focus();
+	defaultInputs();
+		
 	};
 };
 
 
+//reset inputs to default
+function defaultInputs() {
+	$('.website-title-input').val('');
+	$('.website-url-input').val('');
+	$('.enter-button').prop('disabled', true);
+	$('.website-title-input').focus();
+};
+
+
+//counts number of total and read bookmarks
 function countBookmarks() {
 	var count = $('article').length;
 	var readCount = $('.read').length;
 	$('.total-count').text(count);
 	$('.read-count').text(readCount);
 	if (readCount > 0) {
-		$('.clear-all').prop('disabled', false)
-		//change text of span to red if readCount > 0 ??
+		$('.clear-all').prop('disabled', false);
+		$('.read-count').css('color', '#F05A28');
 	} else {
-		$('.clear-all').prop('disabled', true)
+		$('.clear-all').prop('disabled', true);
+		$('.read-count').css('color', '#455A64');
 	}
 };
-//we have bookmark total
-//total read
-//total unread
 
+
+//creates new article element for new bookmark
 function createBookmark(title, link) {
 	var newArticle = document.createElement('article');
 	newArticle.innerHTML = `<h2>${title}</h2>
@@ -91,17 +86,12 @@ function createBookmark(title, link) {
 };
 
 
+//removes all read bookmarks
 function clearRead() {
-	// $('.read').remove();
-
-	console.log('clearRead');
-	////////////////////////////////jquery animation
 	$('.read').slideUp('slow', function() {
 		$('.read').remove();
 		countBookmarks();
 	});
-	///////////////////////////////////////////////
-
 };
 
 

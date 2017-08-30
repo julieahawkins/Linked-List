@@ -24,8 +24,14 @@ $('.main-content').bind('click', function(e) {
 	}
 
 	if(e.target.className === 'delete-button') {
-		e.target.closest('article').remove();
+		var articleDelete = e.target.closest('article');
+		/////////////////////////////jquery animation
+		$(articleDelete).slideUp('slow', function() {
+		$(articleDelete).remove();
 		countBookmarks();
+		//////////////////////////////////////////
+	});
+		
 	}
 });
 
@@ -42,7 +48,14 @@ function enterClick() {
 		alert('YOU NEED BOTH A TITLE AND A URL!')
 	} else {
 	var newArticle = createBookmark(title, link);
-	$('.main-content').prepend(newArticle);
+
+	///////////////////////////////////////////////////////////
+	$(newArticle).prependTo('.main-content').hide().slideDown('slow');
+
+	//old version below... this just makes the bookmark appear
+	//$('.main-content').prepend(newArticle);
+
+
 	countBookmarks();
 	$('.website-title-input').val('');
 	$('.website-url-input').val('');
@@ -80,11 +93,15 @@ function createBookmark(title, link) {
 
 function clearRead() {
 	// $('.read').remove();
-	//toggeSlide or other cool thing???
+
+	console.log('clearRead');
+	////////////////////////////////jquery animation
 	$('.read').slideUp('slow', function() {
-        $('.read').remove();
+		$('.read').remove();
 		countBookmarks();
-    });
+	});
+	///////////////////////////////////////////////
+
 };
 
 

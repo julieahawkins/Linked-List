@@ -3,7 +3,7 @@ var websiteUrlInput = $('.website-url-input');
 var enterButton = $('.enter-button');
 var clearButton =$('.clear-all');
 
-
+//should we use our set vars?
 $('.website-title-input, .website-url-input').keyup(function(e) {
 	e.preventDefault();
 	$('.enter-button').prop('disabled', false);
@@ -72,6 +72,7 @@ function countBookmarks() {
 	$('.read-count').text(readCount);
 	if (readCount > 0) {
 		$('.clear-all').prop('disabled', false)
+		//change text of span to red if readCount > 0 ??
 	} else {
 		$('.clear-all').prop('disabled', true)
 	}
@@ -92,6 +93,7 @@ function createBookmark(title, link) {
 
 function clearRead() {
 	// $('.read').remove();
+
 	console.log('clearRead');
 	////////////////////////////////jquery animation
 	$('.read').slideUp('slow', function() {
@@ -99,8 +101,10 @@ function clearRead() {
 		countBookmarks();
 	});
 	///////////////////////////////////////////////
-	
+
 };
+
+
 
 
 

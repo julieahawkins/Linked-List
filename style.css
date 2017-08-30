@@ -1,7 +1,6 @@
 * {
 	font-family: 'Open Sans', sans-serif;
-	margin: 0px;
-	
+	margin: 0px;	
 }
 
 html, body {
@@ -40,7 +39,7 @@ input {
 	display: block;
 	font-size: 120%;
 	margin: 50px auto;
-	width: 95%;
+	width: 96%;
 }
 
 *:focus {
@@ -67,40 +66,68 @@ input {
 	display: block;
 	font-size: 100%;
 	font-weight: 800;
+	height: 36px;
 	margin: 20px auto;
 	padding: 0px;
 	/*padding-right: 20px;
 	padding-left: 20px;*/
 	text-decoration: none;
-	width: 95%;
+	width: 97%;
+}
+
+.clear-all {
+	width: 86%;
 }
 
 .enter-button:disabled,
 .clear-all:disabled {
-	background-color: gray;
-	border-color: gray;
+	background-color: #A1A5AF;
+	border-color: #A1A5AF;
 	cursor: not-allowed;
 }
-
+/*SCRRROOOOOOOLLLLLLL*//*#A1A5AF*/
 main {
 	background-color: #CFD8DC; 
 	float: right;
 	height: 100%;
 	position: relative;
 	width: 50%;
+	overflow: scroll;
 }
-
+/*ADDED THIS TO FIX THE COUNTERBAR IN PLACE*/
+.counter-div {
+	background-color: #607D8E;
+	position: fixed;
+	z-index: 3000;
+	width: 50%;
+}
+/*ADDED TOP: 100PX TO POSITION FIRST BOOKMARK*/
 .main-content {
 	/*height 5vmax;*/
 	display: table;
 	margin: auto;
 	width: 100%;
-}
+	position: relative;
+	top: 150px;
+}	
 
 h4 {
+	background-color: #FFFFFF;
 	display: inline-block;
-	border: 2px solid #FFC107;
-	padding
+	border: 2px solid #455A64;
+	color: #455A64;
+	padding: 5px;
+}
+
+.total-display {
+	margin: 20px 0px 5px 20px;
+	
+}
+
+.read-display {
+	float: right;
+	margin: 20px 20px 5px 0px;
+	
 }
 
 article {
@@ -208,10 +235,19 @@ a:hover {
 		width: 100%;
 	}
 
+	body {
+		background-color: #CFD8DC;
+	}
+
 	main {
 		float: none;
 		height: auto;
 		margin: 0px;
+		width: 100%;
+	}
+
+	.counter-div {
+		height: 150px;
 		width: 100%;
 	}
 	
@@ -220,6 +256,16 @@ a:hover {
 		position: static;
 		padding: 5px;
 	}
+
+	/*.main-content {
+		position: relative;
+		top: 150px;
+	}*/
+
+
+
+/*HEADER SHOULD BE FIXED IN SMALL VIEW AND MAIN SCROLL*/
+/*COUNTERDIV NEEDS TO BE BETTER IN SMALL VIEW*/
 
 /*WHY IS OUR MAIN-CONTENT DIV'S RIGHT-MARGIN -10???*/
 	/*.main-content {

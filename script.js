@@ -41,8 +41,10 @@ function enterClick() {
 	var title = $('.website-title-input').val(); 
 	var link = $('.website-url-input').val();
 	var validate = validateUrl(link);
-	console.log(validate);
-
+	if(/^(http[s]?:\/\/)/.test(link) === false) {
+		link = 'https://' + link;
+	}
+	
 	//check for errors and display if needed
 	if (title === '' || link === '') {
 		displayErrorMessage('YOU MUST INCLUDE A TITLE AND A LINK.');
@@ -87,7 +89,8 @@ function countBookmarks() {
 //creates new article element for new bookmark
 function createBookmark(title, link) {
 	var newArticle = document.createElement('article');
-	newArticle.innerHTML = `<h2>${title}</h2>
+	newArticle.innerHTML = `
+						<h2>${title}</h2>
 						<p><a href="${link}" onclick="window.open('${link}','_blank')">${link}</a></p>
 						<button class="read-button">Read</button>
 						<button class="delete-button">Delete</button>`;

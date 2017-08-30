@@ -41,6 +41,7 @@ function enterClick() {
 	var title = $('.website-title-input').val(); 
 	var link = $('.website-url-input').val();
 	var validate = validateUrl(link);
+
 	if(/^(http[s]?:\/\/)/.test(link) === false) {
 		link = 'https://' + link;
 	}

@@ -41,7 +41,7 @@ function enterClick() {
 	var title = $('.website-title-input').val(); 
 	var link = $('.website-url-input').val();
 	var validate = validateUrl(link);
-	console.log(validate);
+	// console.log(validate);
 
 	//check for errors and display if needed
 	if (title === '' || link === '') {

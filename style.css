@@ -3,10 +3,14 @@
 	margin: 0px;	
 }
 
+*:focus {
+	box-shadow: 0 0 5px rgba(255, 193, 7, 1);
+	outline: 2px solid #FFC107;
+}
+
 html, body {
 	height: 100vh;
 	width: 100%;
-	/*overflow: hidden;*/
 }
 
 header {
@@ -43,19 +47,9 @@ input {
 	width: 96%;
 }
 
-*:focus {
-	outline: 2px solid #FFC107;
-	box-shadow: 0 0 5px rgba(255, 193, 7, 1);
-}
-
 .enter-button:focus {
-	outline: 2px solid #CFD8DC;
 	box-shadow: 0 0 5px rgba(255, 193, 7, 1);
-}
-
-::placeholder {
-
-	/*check color of placeholder*/
+	outline: 2px solid #CFD8DC;
 }
 
 .enter-button,
@@ -70,17 +64,15 @@ input {
 	height: 36px;
 	margin: 20px auto;
 	padding: 0px;
-	/*padding-right: 20px;
-	padding-left: 20px;*/
 	text-decoration: none;
 	width: 97%;
 }
 
 .clear-all {
-	width: auto;
 	display: inline-block;
 	margin: 20px auto;
 	padding: 3px 7px;
+	width: auto;
 }
 
 .enter-button:disabled,
@@ -89,23 +81,23 @@ input {
 	border-color: #A1A5AF;
 	cursor: not-allowed;
 }
-/*SCRRROOOOOOOLLLLLLL*//*#A1A5AF*/
+
 main {
 	background-color: #CFD8DC; 
 	float: right;
 	height: 100%;
-	position: relative;
-	width: 50%;
 	overflow: scroll;
 	overflow-x: hidden;
+	position: relative;
+	width: 50%;
 }
-/*ADDED THIS TO FIX THE COUNTERBAR IN PLACE*/
+
 .counter-div {
 	background-color: #607D8E;
 	height: 75px;
 	position: fixed;
-	z-index: 3000;
 	width: 50%;
+	z-index: 3000;
 }
 
 .counter-div-content {
@@ -116,33 +108,21 @@ main {
 }
 
 .main-content {
-	/*height 5vmax;*/
 	display: table;
 	margin: auto;
-	width: 100%;
 	position: relative;
-	top: 75px;
+	top: 76px;
+	width: 100%;
 }	
 
 h4 {
 	background-color: #FFFFFF;
-	display: inline-block;
 	border: 2px solid #455A64;
 	color: #455A64;
+	display: inline-block;
+	margin: 20px auto;
 	padding: 5px;
-	margin: 20px auto;
 }
-
-/*.total-display {
-	margin: 20px auto;
-	*/
-}
-
-/*.read-display {
-	float: right;
-	margin: 20px 20px 5px 0px;
-	
-}*/
 
 ::-webkit-scrollbar {
     width: 16px;
@@ -153,8 +133,8 @@ h4 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #A1A5AF;
-  outline: 1px solid #607D8E;
+  	background-color: #A1A5AF;
+  	outline: 1px solid #607D8E;
 }
 
 article {
@@ -175,7 +155,6 @@ p {
 	border-top: 1px solid #CFD8DC;
 	font-size: 140%;
 	padding: 20px 0px;
-
 }
 
 a {
@@ -184,7 +163,6 @@ a {
 }
 
 button {
-	/*inherit says take value from parent element*/
 	background-color: inherit;
 	border: none;
 	color: #607D8E;
@@ -192,33 +170,24 @@ button {
 	text-decoration: underline #F2F4F4;
 }
 
-/*.read-button {
-	float: left;
-}
-*/
 .delete-button {
 	bottom: 5.5%;
-	right: 3%;
 	padding: 0px;
 	position: absolute;
-	
-		z-index: 0;
-	/*float: right;*/
+	right: 3%;
+	z-index: 0;
 }
 
 .read-button:hover, 
 .delete-button:hover, 
 a:hover {
 	color: #455A64;
-	text-decoration: underline #FFC107;
 	font-weight: 800;
+	text-decoration: underline #FFC107;
 }
-
-
 
 .read {
 	background-color: #F2F4F4;
-	/*background-color: magenta;*/
 }
 
 .read .read-button{
@@ -244,16 +213,42 @@ a:hover {
 		overflow: hidden;
 	}
 
-	input {
-		margin: 20px auto;
+	body {
+		background-color: #CFD8DC;
+	}
+	
+	header {
+		float: none;
+		height: 33%;
+		margin: 0px;
+		width: 100%;
+	}
+
+	.header-content {
+		display: block;
+		padding: 5px;
+		position: static;
 	}
 
 	h1 {
 		font-size: 200%;
 	}
+
 	 img {
 	 	width: 50px;
 	 }
+
+	input {
+		margin: 20px auto;
+	}
+
+	main {
+		float: none;
+		height: auto;
+		margin: 0px;
+		overflow: hidden;
+		width: 100%;
+	}
 
 	h2 {
 		font-size: 140%;
@@ -263,68 +258,26 @@ a:hover {
 		font-size: 120%;
 	}
 
-	header {
-		float: none;
-		height: 33%;
-		margin: 0px;
-		width: 100%;
-	}
-
-	body {
-		background-color: #CFD8DC;
-	}
-
-	main {
-		float: none;
-		height: auto;
-		margin: 0px;
-		width: 100%;
-		overflow: hidden;
-		/*overflow-x: hidden;*/
-	}
-
 	.counter-div {
 		height: 15%;
 		position: initial;
 		width: 100%;
 	}
 	
-	.header-content {
-		display: block;
-		position: static;
-		padding: 5px;
-	}
-
 	.main-content {
-		margin-top: 235px;
-		position: fixed;
 		display: block;
-		padding: 5px;
 		height: 58%;
+		margin-top: 235px;
+		padding: 5px;
+		position: fixed;
 		overflow: scroll;
 		overflow-x: hidden;
-
-		/*position: relative;
-		top: 150px;
-		bottom: 0px;*/
 	}
 
 	::-webkit-scrollbar {
-    	width: 26px;
     	height: 100%;
+    	width: 26px;
 	}
-
-
-
-/*HEADER SHOULD BE FIXED IN SMALL VIEW AND MAIN SCROLL*/
-/*COUNTERDIV NEEDS TO BE BETTER IN SMALL VIEW*/
-
-/*WHY IS OUR MAIN-CONTENT DIV'S RIGHT-MARGIN -10???*/
-	/*.main-content {
-		margin: 0px auto;
-		margin-right: 10px;
-	}*/
-
 }
 
 

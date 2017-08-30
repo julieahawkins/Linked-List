@@ -233,6 +233,10 @@ a:hover {
 .read a:hover {
 	text-decoration: underline #FFC107;
 }
+
+.error-message {
+	background-color: #F05A28;
+}
  
  
 @media screen and (max-width: 700px) {

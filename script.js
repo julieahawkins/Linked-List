@@ -1,12 +1,16 @@
-//event listeners
+//set focus on page load
 $('.website-title-input').focus();
+
+
+//event listeners
 $('.enter-button').bind('click', enterClick);
 $('.clear-all').bind('click', clearRead);
 
-
 $('.website-title-input, .website-url-input').keyup(function(e) {
 	e.preventDefault();
+	$('.enter-button').removeClass('error-message');
 	$('.enter-button').prop('disabled', false);
+	$('.enter-button').text('Enter');
 
 	if ($('.website-url-input').val() === '' || $('.website-title-input').val() === '') {
 		$('.enter-button').prop('disabled', true);
@@ -14,7 +18,6 @@ $('.website-title-input, .website-url-input').keyup(function(e) {
 		enterClick();
 	}
 });
-
 
 $('.main-content').bind('click', function(e) {
 	e.preventDefault();
@@ -37,16 +40,22 @@ $('.main-content').bind('click', function(e) {
 function enterClick() {
 	var title = $('.website-title-input').val(); 
 	var link = $('.website-url-input').val();
+	var validate = validateUrl(link);
+	console.log(validate);
+
+	//check for errors and display if needed
 	if (title === '' || link === '') {
-		//we know alerts are terrible, you should never see this one!
-		alert('YOU NEED BOTH A TITLE AND A URL!')
-	} else {
-	var newArticle = createBookmark(title, link);
-	$(newArticle).prependTo('.main-content').hide().slideDown('slow');
-	countBookmarks();
-	defaultInputs();
-		
-	};
+		displayErrorMessage('YOU MUST INCLUDE A TITLE AND A LINK.');
+	} else if(!validate){
+		displayErrorMessage('INVALID URL - PLEASE TRY AGAIN.');
+
+	//no errors --> create and append new article bookmark	
+	} else {	
+		var newArticle = createBookmark(title, link);
+		$(newArticle).prependTo('.main-content').hide().slideDown('slow');
+		countBookmarks();
+		defaultInputs();
+	}
 };
 
 
@@ -59,7 +68,7 @@ function defaultInputs() {
 };
 
 
-//counts number of total and read bookmarks
+//counts number of total and read bookmarks and displays the counts
 function countBookmarks() {
 	var count = $('article').length;
 	var readCount = $('.read').length;
@@ -92,6 +101,20 @@ function clearRead() {
 		$('.read').remove();
 		countBookmarks();
 	});
+};
+
+
+//returns true if valid URL, returns false if not valid URL
+function validateUrl(link) {
+	var regEx = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
+	return regEx.test(link);
+};
+
+
+//displays error message 
+function displayErrorMessage(message) {
+	$('.enter-button').addClass('error-message');
+	$('.enter-button').text(message);
 };
 
 
